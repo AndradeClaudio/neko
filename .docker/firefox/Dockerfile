@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=m1k1o/neko:base
+ARG BASE_IMAGE=neko_base
 FROM $BASE_IMAGE
 
 ARG SRC_URL="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
@@ -7,7 +7,7 @@ ARG SRC_URL="https://download.mozilla.org/?product=firefox-latest&os=linux64&lan
 # install firefox
 RUN set -eux; apt-get update; \
     apt-get install -y --no-install-recommends openbox \
-    xz-utils libgtk-3-0 libdbus-glib-1-2; \
+    xz-utils libgtk-3-0 libdbus-glib-1-2 desktop-file-utils  libpci3 pciutils; \
     #
     # fetch latest release
     wget -O /tmp/firefox-setup.tar.xz "${SRC_URL}"; \
